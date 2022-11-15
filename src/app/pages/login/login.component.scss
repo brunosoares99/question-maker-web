@@ -1,0 +1,19 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: calc(100% - 64px);
+}
+.card {
+  max-width: 400px;
+}
+.full-width {
+  width: 100%;
+}
+
+.signup {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}

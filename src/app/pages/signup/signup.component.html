@@ -1,0 +1,57 @@
+<div class="container">
+  <mat-card *ngIf="!loading" class="card">
+    <mat-card-header>
+      <mat-card-title>Preencha os dados</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)" [formGroup]="form" >
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Nome</mat-label>
+          <input type="email" matInput formControlName="name"
+                 placeholder="Ex. email@example.com">
+          <mat-error *ngIf="this.form.get('name')?.hasError('required')">
+            O nome é <strong>obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput formControlName="email"
+                 placeholder="Ex. email@example.com">
+          <mat-error *ngIf="this.form.get('email')?.hasError('email') && !this.form.get('email')?.hasError('required')">
+           Por favor, insira um email válido.
+          </mat-error>
+          <mat-error *ngIf="this.form.get('email')?.hasError('required')">
+            O e-mail é <strong>obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Senha</mat-label>
+          <input type="password" matInput formControlName="password"
+                 placeholder="Ex. 123456">
+          <mat-error *ngIf="this.form.get('password')?.hasError('required')">
+            A senha é <strong>obrigatória</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Confirme a senha</mat-label>
+          <input type="password" matInput formControlName="confirmPassword"
+                 placeholder="Ex. 123456">
+          <mat-error *ngIf="this.form.get('confirmPassword')?.hasError('required')">
+            A confirmação da senha é <strong>obrigatória</strong>
+          </mat-error>
+          <mat-error *ngIf="form.get('confirmPassword')?.hasError('mismatch')">
+            As senhas não são iguais
+          </mat-error>
+        </mat-form-field>
+        <button type="submit" class="full-width" mat-raised-button color="primary" >Criar conta</button>
+      </form>
+    </mat-card-content>
+    <mat-card-actions>
+      
+      <span class="signin">
+        <a routerLink="/login">Já possui uma conta? Faça login</a>
+      </span>
+    </mat-card-actions>
+  </mat-card>
+  <mat-spinner *ngIf="loading"></mat-spinner>
+</div>

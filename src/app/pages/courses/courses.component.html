@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="container__add-button">
+    <a routerLink="/courses/create">
+      <button color="primary" mat-raised-button>
+        Adicionar Curso
+        <mat-icon>add</mat-icon>
+      </button>
+    </a>
+  </div>
+  <div class="grid">
+    <div *ngFor="let course of courses" class="grid__course">
+      <mat-card class="card">
+        <div class="header">
+          <mat-card-header>
+            <mat-card-title>{{ course.name }}</mat-card-title>
+          </mat-card-header>
+          <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+              <mat-icon>delete</mat-icon>
+              <span>Apagar</span>
+            </button>
+          </mat-menu>
+        </div>
+        <mat-card-content>
+          {{ course.description }}
+        </mat-card-content>
+        <mat-card-actions>
+          <button color="primary" mat-raised-button routerLink="/courses/{{ course.id }}/details">Ver detalhes</button>
+          <button mat-raised-button routerLink="/courses/{{ course.id }}/edit">Editar</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>
+<div class="floating-button">
+  <a routerLink="/courses/create">
+    <button mat-fab color="primary">
+      <mat-icon>add</mat-icon>
+    </button>
+  </a>
+</div>

@@ -1,0 +1,24 @@
+<div class="container">
+  <mat-card class="card">
+    <mat-card-header>
+      <mat-card-title>Criar curso</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form #f="ngForm" (ngSubmit)="onSubmit(f)" [formGroup]="form" >
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Nome do curso</mat-label>
+          <input type="email" matInput formControlName="name"
+                 placeholder="Ex. Curso de Programação">
+          <mat-error *ngIf="this.form.get('name')?.hasError('required')">
+            O nome é <strong>obrigatório</strong>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Descrição do curso</mat-label>
+          <textarea rows="5" formControlName="description" matInput placeholder="Ex. Esse curso é muito útil para aprender lógica"></textarea>
+        </mat-form-field>
+        <button type="submit" class="full-width" mat-raised-button color="primary" >Criar curso</button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>
